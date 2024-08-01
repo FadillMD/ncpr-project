@@ -16,14 +16,14 @@
                             <i class="bi bi-circle"></i><span>List Orders</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a wire:navigate class="{{ request()->routeIs('orders.create') ? 'active' : '' }}" href="/orders/create">
                             <i class="bi bi-circle"></i><span>Create Orders</span>
                         </a>
-                    </li>
+                    </li> --}}
                 @endslot
             </x-nav-link-dropdown>
-        
+            
         </ul>
 
     </aside>

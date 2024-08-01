@@ -27,7 +27,7 @@
         <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
       
         <!-- Template Main CSS File -->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="/assets/css/style.css" rel="stylesheet">
     </head>
     <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -40,12 +40,12 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
+        {{-- <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
             <input type="text" name="query" placeholder="Search" title="Enter search keyword">
             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
-        </div><!-- End Search Bar -->
+        </div><!-- End Search Bar --> --}}
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -56,7 +56,7 @@
                 </a>
             </li><!-- End Search Icon-->
 
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i class="bi bi-bell"></i>
@@ -149,7 +149,7 @@
 
                 <li class="message-item">
                     <a href="#">
-                    <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                    <img src="/assets/img/messages-1.jpg" alt="" class="rounded-circle">
                     <div>
                         <h4>Maria Hudson</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -163,7 +163,7 @@
 
                 <li class="message-item">
                     <a href="#">
-                    <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                    <img src="/assets/img/messages-2.jpg" alt="" class="rounded-circle">
                     <div>
                         <h4>Anna Nelson</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -177,7 +177,7 @@
 
                 <li class="message-item">
                     <a href="#">
-                    <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                    <img src="/assets/img/messages-3.jpg" alt="" class="rounded-circle">
                     <div>
                         <h4>David Muldon</h4>
                         <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
@@ -195,19 +195,19 @@
 
                 </ul><!-- End Messages Dropdown Items -->
 
-            </li><!-- End Messages Nav -->
+            </li><!-- End Messages Nav --> --}}
 
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                {{-- <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
+                <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user() ? auth()->user()->name : 'Guest' }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header">
-                    <h6>Kevin Anderson</h6>
-                    <span>Web Designer</span>
+                    <h6>{{ auth()->user() ? auth()->user()->name : 'Guest' }}</h6>
+                    <span>{{ auth()->user() ? auth()->user()->role : 'Undifined' }}</span>
                 </li>
                 <li>
                     <hr class="dropdown-divider">
@@ -244,10 +244,16 @@
                 </li>
 
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Sign Out</span>
-                    </a>
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST">  
+                        @csrf                      
+                        <button class="dropdown-item d-flex align-items-center" type="submit">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Sign Out</span>
+                        </a>
+
+                    </form>
+                    @endauth
                 </li>
 
                 </ul><!-- End Profile Dropdown Items -->
@@ -277,16 +283,16 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="/assets/vendor/quill/quill.js"></script>
+    <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
     </body>
 </html>

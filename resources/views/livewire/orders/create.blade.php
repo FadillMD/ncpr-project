@@ -19,35 +19,77 @@
                   <h5 class="card-title">Input Order Baru</h5>
     
                   <!-- Multi Columns Form -->
-                  <form class="row g-3">
+                  <form wire:submit="save" class="row g-3">
                     
                     <div class="col-md-6">
                       <label for="inputOpc" class="form-label">No. OPC</label>
-                      <input type="text" name="opc_numb" class="form-control" id="inputOpc">
+                      <input wire:model="form.opc_numb" type="text" name="opc_numb" class="form-control" id="inputOpc">
+                      @error('form.opc_numb')
+                        <small class="text text-danger d-block mt-1 show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                        @enderror
                     </div>
                     <div class="col-md-6">
                       <label for="inputProdNumb" class="form-label">No. Produk</label>
-                      <input type="text" name="prod_numb" class="form-control" id="inputProdNumb">
+                      <input wire:model="form.prod_numb" type="text" name="prod_numb" class="form-control" id="inputProdNumb">
+                      @error('form.prod_numb')
+                        <small class="text text-danger d-block mt-1 show show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                        @enderror
                     </div>
                     <div class="col-12">
                       <label for="inputProdName" class="form-label">Nama Produk</label>
-                      <input type="text" name="prod_name" class="form-control" id="inputProdName" placeholder="YSLY-JZ ....">
+                      <input wire:model="form.prod_name" type="text" name="prod_name" class="form-control" id="inputProdName" placeholder="YSLY-JZ ....">
+                      @error('form.prod_name')
+                        <small class="text text-danger d-block mt-1  show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                      @enderror
                     </div>
                     <div class="col-6">
                       <label for="inputCustomer" class="form-label">Customer</label>
-                      <input type="text" name="customer" class="form-control" id="inputCustomer">
+                      <input wire:model="form.customer" type="text" name="customer" class="form-control" id="inputCustomer">
+                      @error('form.customer')
+                        <small class="text text-danger d-block mt-1 show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                      @enderror
                     </div>
                     <div class="col-md-6">
-                      <label for="inputCity" class="form-label">City</label>
-                      <input type="text" class="form-control" id="inputCity">
+                      <label for="inputLenght" class="form-label">Length</label>
+                      <input wire:model="form.length_order" type="text" name="length_order" class="form-control" id="inputLenght">
+                      @error('form.length_order')
+                        <small class="text text-danger d-block mt-1 show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                      @enderror
                     </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
+                    <div class="col-6">
+                      <label for="inputReqCustomer" class="form-label">Request Customer</label>
+                      <input wire:model="form.req_customer" type="date" name="req_customer" class="form-control" id="inputReqCustomer">
+                      @error('form.req_customer')
+                        <small class="text text-danger d-block mt-1 show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                      @enderror
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputDateOrder" class="form-label">Order Date</label>
+                      <input wire:model="form.order_date" type="date" name="order_date" class="form-control" id="inputDateOrder">
+                      @error('form.order_date')
+                        <small class="text text-danger d-block mt-1 show" role="alert">
+                          <i class="bi bi-exclamation-octagon me-1"></i>
+                          {{ $message }}
+                        </small>   
+                      @enderror
                     </div>
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Submit</button>
